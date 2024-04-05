@@ -1,0 +1,34 @@
+from collections import defaultdict
+
+def get_zero():
+    return 0
+
+# dd = defaultdict(get_zero)  
+dd = defaultdict(lambda: 0)  # create default dict with function that returns 0
+
+dd['spam'] = 10  # assign some values to the dict
+dd['eggs'] = 22
+
+print(dd['spam'])  # print values
+print(dd['eggs'])
+print(dd['foo'])  # missing key 'foo' invokes function and returns 0
+print(f"{dd = }")
+
+
+print('-' * 60)
+
+fruits = ["pomegranate", "cherry", "apricot", "date", "apple",
+"lemon", "kiwi", "orange", "lime", "watermelon", "guava",
+"papaya", "fig", "pear", "banana", "tamarind", "persimmon",
+"elderberry", "peach", "blueberry", "lychee", "grape" ]
+
+#                        callable (function or class)
+fruit_info = defaultdict(list)
+
+for fruit in fruits:
+    first_letter = fruit[0]
+    fruit_info[first_letter].append(fruit)
+
+for letter, fruits in sorted(fruit_info.items()):
+    print(letter, fruits)
+
